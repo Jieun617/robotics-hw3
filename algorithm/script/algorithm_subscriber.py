@@ -6,5 +6,5 @@ def callback(msg):
     print "subscribe:", msg.timestamp.secs%100, msg.vector.x, msg.vector.y, msg.vector.z
 
 rospy.init_node('algorithm_subscriber')
-sub = rospy.Subscriber('algorithm_msg', common_msgs, callback)
+sub = rospy.Subscriber('custom_msg', common_msgs, callback)
 rospy.spin()
