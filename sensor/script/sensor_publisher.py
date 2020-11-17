@@ -4,7 +4,7 @@ from geometry_msgs.msg import Vector3
 from common_msgs.msg import common_msgs
 
 rospy.init_node('sensor_publisher')
-pub = rospy.Publisher('sensor_msg', common_msgs, queue_size=1)
+pub = rospy.Publisher('custom_msg', common_msgs, queue_size=1)
 msg = common_msgs()
 rate = rospy.Rate(1)
 while not rospy.is_shutdown():
