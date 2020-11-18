@@ -11,7 +11,7 @@ rospy.wait_for_service('add_two_number')
 requester = rospy.ServiceProxy('add_two_number', AddTwoNum)
 print("requester type:", type(requester), ", callable?", callable(requester))
 msg = common_msgs()
-rate = rospy.Rate(10)
+rate = rospy.Rate(1)
 while not rospy.is_shutdown():
     msg.timestamp = rospy.get_rostime()
     second = msg.timestamp.secs
@@ -19,6 +19,7 @@ while not rospy.is_shutdown():
     pub.publish(msg)
     print("publish:", msg.timestamp.secs%100, msg.vector.x, msg.vector.y, msg.vector.z)
     if second % 20 == 0:
-        req = AddTwoNumRequest(a=msg.vector.x, b= msg.vector.y/ 2, c= msg.vector.z*2)
+        req = AddTwoNumRequest(a=msg.vector.x, b= msg.vector.y*2, c= msg.vector.z*2)
         res = requester(req)
+	print("request data:", req.a, req.b, req.c, " response:", res.sum)
     rate.sleep()
