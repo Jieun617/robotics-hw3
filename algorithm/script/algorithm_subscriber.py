@@ -13,6 +13,7 @@ def service_callback(request):
     return response
 
 
+
 rospy.init_node('algorithm_service')
 sub = rospy.Subscriber('custom_msg', common_msgs, callback)
 service = rospy.Service('add_two_number', AddTwoNum, service_callback)
