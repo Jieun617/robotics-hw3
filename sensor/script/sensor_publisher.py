@@ -21,5 +21,5 @@ while not rospy.is_shutdown():
     if second % 20 == 0:
         req = AddTwoNumRequest(a=msg.vector.x, b= msg.vector.y*2, c= msg.vector.z*2)
         res = requester(req)
-	print("request data:", req.a, req.b, req.c, " response:", res.sum)
+	print(second%100, "request:", req.a, req.b, req.c, " response:", res.sum)
     rate.sleep()
